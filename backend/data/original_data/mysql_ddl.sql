@@ -1,3 +1,5 @@
+-- Gererated from https://dbdiagram.io/ using DBML
+
 CREATE TABLE `accounts` (
       `account` varchar(255) UNIQUE PRIMARY KEY NOT NULL,
       `sector` varchar(255) NOT NULL,

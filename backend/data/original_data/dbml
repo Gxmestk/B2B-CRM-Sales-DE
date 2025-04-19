@@ -1,0 +1,39 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table accounts {
+  account varchar [primary key, not null, unique] 
+  sector varchar [not null]
+  year_established integer64 [not null]
+  revenue float64 [not null]
+  employees int64 [not null]
+  office_location varchar [not null]
+  subsidiary_of varchar [default: null]
+}
+
+Table sale_teams {
+  sales_agent varchar [primary key, not null, unique]
+  manager varchar [not null]
+  regional_office varchar [not null]
+}
+
+Table sales_pipeline {
+  opportunity_id varchar [primary key, not null, unique]
+  sales_agent varchar [not null]
+  product varchar [not null]
+  account varchar [default: null]
+  deal_stage varchar [not null, default: 'Prospecting']
+  engage_date datetime [default: null]
+  close_date datetime [default: null]
+  close_value float64 [default: null]
+}
+
+Table products {
+  product varchar [primary key, not null, unique]
+  series varchar [not null]
+  sales_price int64 [not null]
+}
+
+Ref: products.product < sales_pipeline.product
+Ref: sale_teams.sales_agent < sales_pipeline.sales_agent
+Ref: accounts.account < sales_pipeline.account
