@@ -4,9 +4,9 @@
 Table accounts {
   account varchar [primary key, not null, unique] 
   sector varchar [not null]
-  year_established integer64 [not null]
-  revenue float64 [not null]
-  employees int64 [not null]
+  year_established int [not null]
+  revenue float [not null]
+  employees int [not null]
   office_location varchar [not null]
   subsidiary_of varchar [default: null]
 }
@@ -23,15 +23,15 @@ Table sales_pipeline {
   product varchar [not null]
   account varchar [default: null]
   deal_stage varchar [not null, default: 'Prospecting']
-  engage_date datetime [default: null]
-  close_date datetime [default: null]
-  close_value float64 [default: null]
+  engage_date varchar [default: null]
+  close_date varchar [default: null]
+  close_value int [default: null]
 }
 
 Table products {
   product varchar [primary key, not null, unique]
   series varchar [not null]
-  sales_price int64 [not null]
+  sales_price int [not null]
 }
 
 Ref: products.product < sales_pipeline.product

@@ -3,9 +3,9 @@
 CREATE TABLE `accounts` (
       `account` varchar(255) UNIQUE PRIMARY KEY NOT NULL,
       `sector` varchar(255) NOT NULL,
-      `year_established` integer64 NOT NULL,
-      `revenue` float64 NOT NULL,
-      `employees` int64 NOT NULL,
+      `year_established` int NOT NULL,
+      `revenue` float NOT NULL,
+      `employees` int NOT NULL,
       `office_location` varchar(255) NOT NULL,
       `subsidiary_of` varchar(255) DEFAULT null
 );
@@ -22,15 +22,15 @@ CREATE TABLE `sales_pipeline` (
       `product` varchar(255) NOT NULL,
       `account` varchar(255) DEFAULT null,
       `deal_stage` varchar(255) NOT NULL DEFAULT 'Prospecting',
-      `engage_date` DATETIME DEFAULT NULL,
-      `close_date` DATETIME DEFAULT NULL,
-      `close_value` float64 DEFAULT null
+      `engage_date` varchar(255) DEFAULT null,
+      `close_date` varchar(255) DEFAULT null,
+      `close_value` int DEFAULT null
 );
 
 CREATE TABLE `products` (
       `product` varchar(255) UNIQUE PRIMARY KEY NOT NULL,
       `series` varchar(255) NOT NULL,
-      `sales_price` int64 NOT NULL
+      `sales_price` int NOT NULL
 );
 
 ALTER TABLE `sales_pipeline` ADD FOREIGN KEY (
