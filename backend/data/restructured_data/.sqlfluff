@@ -1,0 +1,9 @@
+[sqlfluff]
+dialect = mysql
+# exclude_rules =
+
+[sqlfluff:indentation]
+tab_space_size = 6
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
